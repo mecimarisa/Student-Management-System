@@ -1,10 +1,11 @@
 package org.mmeci.config;
 
 import lombok.Getter;
-import org.mmeci.entity.Actor;
-import org.mmeci.entity.ActorMovie;
-import org.mmeci.entity.Genre;
-import org.mmeci.entity.Movie;
+import org.mmeci.entity.Student;
+import org.mmeci.entity.Professor;
+import org.mmeci.entity.Grade;
+import org.mmeci.entity.Course;
+import org.mmeci.entity.StudentCourse;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -35,10 +36,11 @@ public class HibernateConfiguration {
             }
 
             configuration.setProperties(properties);
-            configuration.addAnnotatedClass(Actor.class);
-            configuration.addAnnotatedClass(Movie.class);
-            configuration.addAnnotatedClass(Genre.class);
-            configuration.addAnnotatedClass(ActorMovie.class);
+            configuration.addAnnotatedClass(Student.class);
+            configuration.addAnnotatedClass(Professor.class);
+            configuration.addAnnotatedClass(Grade.class);
+            configuration.addAnnotatedClass(Course.class);
+            configuration.addAnnotatedClass(StudentCourse.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
