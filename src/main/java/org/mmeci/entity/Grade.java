@@ -13,6 +13,8 @@ public class Grade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long gradeId;
 
+    private int grading;
+
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
@@ -21,7 +23,7 @@ public class Grade {
     @JoinColumn(name = "course_id")
     private Course course;
 
-
-
-
+    public Grade(int grading) {
+        this.grading = grading;
+    }
 }

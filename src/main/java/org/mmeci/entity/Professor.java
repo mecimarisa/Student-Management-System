@@ -12,22 +12,20 @@ import java.util.List;
 public class Professor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
 
     private String lastName;
 
-    private String email;
+    private String specialization;
 
-    private String password;
-
-    public Professor(String name, String lastName, String email, String password) {
+    public Professor(String name, String lastName , String specialization) {
         this.name = name;
         this.lastName = lastName;
-        this.email = email;
-        this.password = password;
+        this.specialization = specialization;
+
     }
 
     @OneToMany(mappedBy = "professor")

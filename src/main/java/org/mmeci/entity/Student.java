@@ -14,24 +14,23 @@ import java.util.Set;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
 
     private String lastName;
 
-    private String email;
+    private int yearOfStudy;
 
-    private String password;
 
     @OneToMany(mappedBy = "student")
     private List<Grade> grades;
 
-    public Student(String name, String lastName, String email, String password) {
+    public Student(String name, String lastName ,int yearOfStudy) {
         this.name = name;
         this.lastName = lastName;
-        this.email = email;
-        this.password = password;
+        this.yearOfStudy = yearOfStudy;
+
     }
 }
