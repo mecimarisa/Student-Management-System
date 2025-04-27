@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Entity(name = "professors")
-@Data
+@Entity
+@Table(name = "professors")
 @NoArgsConstructor
 public class Professor {
 
@@ -21,6 +21,9 @@ public class Professor {
 
     private String specialization;
 
+    @OneToMany(mappedBy = "proffesor")
+    private List<Course> courses;
+
     public Professor(String name, String lastName , String specialization) {
         this.name = name;
         this.lastName = lastName;
@@ -28,6 +31,35 @@ public class Professor {
 
     }
 
-    @OneToMany(mappedBy = "professor")
-    private List<Course> courses;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
 }

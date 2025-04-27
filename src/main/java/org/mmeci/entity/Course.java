@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Entity(name = "courses")
+@Entity
+@Table(name = "courses")
 @Data
 @NoArgsConstructor
 public class Course {
@@ -17,16 +18,22 @@ public class Course {
 
     private String name;
 
+    @OneToMany(mappedBy = "course")
+    private List<StudentCourse> studentCourses;
+
     @ManyToOne
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
-    @OneToMany(mappedBy = "course")
-    private List<Grade> grades;
+    public Course(String name) {
+        this.name = name;
+    }
 
-    @OneToMany(mappedBy = "course" , fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<StudentCourse> studentCourses;
+    public String getName() {
+        return name;
+    }
 
-
-
+    public void setName(String name) {
+        this.name = name;
+    }
 }

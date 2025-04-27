@@ -8,7 +8,8 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.Set;
 
-@Entity(name = "students")
+@Entity
+@Table(name = "students")
 @Data
 @NoArgsConstructor
 public class Student {
@@ -23,14 +24,34 @@ public class Student {
 
     private int yearOfStudy;
 
-
-    @OneToMany(mappedBy = "student")
-    private List<Grade> grades;
-
     public Student(String name, String lastName ,int yearOfStudy) {
         this.name = name;
         this.lastName = lastName;
         this.yearOfStudy = yearOfStudy;
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getYearOfStudy() {
+        return yearOfStudy;
+    }
+
+    public void setYearOfStudy(int yearOfStudy) {
+        this.yearOfStudy = yearOfStudy;
     }
 }

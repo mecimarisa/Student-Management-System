@@ -1,9 +1,7 @@
 package org.mmeci.config;
 
-import lombok.Getter;
 import org.mmeci.entity.Student;
 import org.mmeci.entity.Professor;
-import org.mmeci.entity.Grade;
 import org.mmeci.entity.Course;
 import org.mmeci.entity.StudentCourse;
 import org.hibernate.SessionFactory;
@@ -38,7 +36,6 @@ public class HibernateConfiguration {
             configuration.setProperties(properties);
             configuration.addAnnotatedClass(Student.class);
             configuration.addAnnotatedClass(Professor.class);
-            configuration.addAnnotatedClass(Grade.class);
             configuration.addAnnotatedClass(Course.class);
             configuration.addAnnotatedClass(StudentCourse.class);
 
