@@ -62,4 +62,7 @@ public class CourseRepository {
     }
 
 
+    public EntityManager getEntityManager() {
+            return entityManager;
+    }
 }

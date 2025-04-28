@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -25,6 +27,13 @@ public class Course {
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> students = new ArrayList<>();
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
     public Course(String name) {
         this.name = name;
     }
@@ -36,4 +45,6 @@ public class Course {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

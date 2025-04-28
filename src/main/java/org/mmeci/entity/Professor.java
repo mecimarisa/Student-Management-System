@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,8 +22,8 @@ public class Professor {
 
     private String specialization;
 
-    @OneToMany(mappedBy = "proffesor")
-    private List<Course> courses;
+    @OneToMany(mappedBy = "professor")
+    private List<Course> courses = new ArrayList<>();
 
     public Professor(String name, String lastName , String specialization) {
         this.name = name;

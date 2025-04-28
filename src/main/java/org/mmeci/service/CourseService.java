@@ -1,6 +1,7 @@
 package org.mmeci.service;
 
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.mmeci.entity.Course;
 import org.mmeci.entity.Student;
 import org.mmeci.repository.CourseRepository;
@@ -41,7 +42,19 @@ public class CourseService {
     }
 
 
+    @Transactional
     public boolean assignStudentToCourse(Student student, Course course) {
-        return StudentCourseRepository.assignStudentToMovie(movie);
+        try {
+            student.getCourses().add(course);
+            course.getStudents().add(student);
+
+            courseRepository.getEntityManager().merge(student);
+            courseRepository.getEntityManager().merge(course);
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

@@ -24,6 +24,9 @@ public class Student {
 
     private int yearOfStudy;
 
+    @ManyToMany
+    private List<Course> courses;
+
     public Student(String name, String lastName ,int yearOfStudy) {
         this.name = name;
         this.lastName = lastName;
